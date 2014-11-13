@@ -1,0 +1,40 @@
+﻿
+<html data-ng-app="app">
+<head>
+
+    <title>SVG Demo</title>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-resource.min.js"></script>
+
+
+    <script src="Scripts/app/app.js"></script>
+
+   
+    <script src="Scripts/app/controllers/svgController.js"></script>
+
+    <script src="Scripts/app/directives/svgCanvas.js"></script>
+    <script src="Scripts/app/directives/penTool.js"></script>
+
+    <script src="Scripts/app/services/penServices.js"></script>
+    <script src="Scripts/app/services/svgElement.js"></script>
+</head>
+<body>
+    <div data-ng-controller="svgController">
+        <input type="button" value="path" data-ng-click="pathToolClick()">
+        <input type="button" value="strokeEraser" data-ng-click="strokeEraserClick()">
+        <input type="button" value="freeEraser" data-ng-click="freeEraserClick()">
+        <select ng-model="myColor" ng-options="color for color in colorPalette" ng-change="setStrokeColorChange(myColor)"></select><br>
+        <select ng-model="myStroke" ng-options="stroke for stroke in strokePalette" ng-change="setStrokeWidthChange(myStroke)"></select><br>
+
+        <div style="height:20px; width:50px"
+             ng-style="{'background-color':myColor,'border':myStroke }">
+        </div>
+        <div>
+            <svg-canvas style="border: 2px solid;">
+              
+            </svg-canvas>
+           
+        </div>
+    </div>
+</body>
+</html>
